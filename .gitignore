@@ -1,0 +1,6 @@
+.idea
+.cache
+/vendor/
+/metrics/
+
+composer.lock

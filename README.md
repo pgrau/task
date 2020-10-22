@@ -1,2 +1,2 @@
 # task
-Hexagonal Architecture, DDD &amp; CQRS in PHP 
+Hexagonal Architecture, DDD &amp; Event Driven Architecture in PHP 

@@ -1,0 +1,1 @@
+INSERT INTO `task` (`id`,`summary`,`description`,`priority`,`assigned_to`,`scheduled_at`,`created_at`,`update_at`) VALUES ('67ad4343-9441-4079-992c-6b840b4b5982','summary','description','HIGH',NULL,NULL,'2020-10-22 20:33:03.680307',NULL);
