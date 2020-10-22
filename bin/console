@@ -1,0 +1,30 @@
+#!/usr/local/bin/php
+<?php
+
+require __DIR__.'/../vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use Project\Infrastructure\UI\Command\Database;
+use Project\Infrastructure\UI\Command\Task;
+use Project\Infrastructure\UI\Command\User;
+use Project\Infrastructure\DI\ThePhpLeague\Container;
+use Project\Infrastructure\DI\ThePhpLeague\ServiceProvider;
+
+$dotenv = new \Symfony\Component\Dotenv\Dotenv();
+$dotenv->load(__DIR__.'/../.env');
+
+$container = new Container();
+$application = new Application('TASK MANAGER APP');
+
+$application->add(new Database\CreateDatabaseCommand());
+$application->add(new Database\CreateSchemaCommand($container->get(ServiceProvider::DBAL_CONNECTION)));
+
+$application->add(new Task\GetTasksByUserAndSheduledTodayCommand($container->get(ServiceProvider::LEAGUE_QUERY_BUS)));
+$application->add(new Task\TaskCreateCommand(
+        $container->get(ServiceProvider::LEAGUE_COMMAND_BUS),
+        $container->get(ServiceProvider::LEAGUE_QUERY_BUS))
+);
+
+$application->add(new User\UserCreateCommand($container->get(ServiceProvider::LEAGUE_COMMAND_BUS)));
+
+$application->run();
