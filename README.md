@@ -47,6 +47,7 @@ This project follow the standards described on <a href="https://docs.microsoft.c
     
 2. This app is only available by Command Interface Line
    You can see all availables command executing:
+   
    `docker exec -it task-php bin/console`
    
    You can see all domain event published on RabbitMQ - exchange `domain_events` on 
@@ -60,14 +61,13 @@ You can:
 
 1. Create users `docker exec -it task-php bin/console user:create`
 2. Create Tasks `docker exec -it task-php bin/console task:create`
-3. Get Tasks assigned to user today `task:find:user:today`
+3. Get Tasks assigned to user today `docker exec -it task-php bin/console task:find:user:today`
 
 ### 🎯 Ports and Adapters / Hexagonal Architecture
 
 This repository follow the Ports and Adapters / Hexagonal Architecture  pattern.
    
 ```
-$ `tree -L 5 src`
 src
 ├── Application  // Use Cases
 │   ├── Task
