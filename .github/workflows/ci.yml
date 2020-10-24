@@ -34,4 +34,4 @@ jobs:
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
        - name: Run Static Analysis
-         run: phpstan analyse --memory-limit=4000M
+         run: vendor/bin/phpstan analyse --memory-limit=4000M
