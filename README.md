@@ -74,7 +74,7 @@ This repository follow the Ports and Adapters / Hexagonal Architecture  pattern.
    
 ```
 src
-├── Application  // Use Cases
+├── Application  // Write / Read Use Cases
 │   ├── Task
 │   │   ├── CreateTask
 │   │   │   ├── CreateTaskCommand.php
@@ -193,13 +193,13 @@ src
 
 We use command bus for all use cases need write
 
-All commands bus are executed with transaction mode
+All commands are executed with transaction mode
 
 ### Query Bus
 
 We use query bus for all use cases need only read
 
-All query bus are executed without transaction
+All queries are executed without transaction
 
 ### Event Bus
 
@@ -208,3 +208,15 @@ We use event bus for
 1. Append the domain events to Event Store
 2. Execute subscribers subscribed to domain events
 3. Publish all domain event to message queue 
+
+###  🔦 Test
+
+This project contain unit and integration test and we cover 100% of code on domain and application layers.
+
+You can execute the code coverage with the follow command:
+
+`./build.sh metrics`
+
+The report is generated on `metrics` folder with HTML format
+
+
