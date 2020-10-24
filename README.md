@@ -54,8 +54,6 @@ This project follow the Event Sourcing pattern described on <a href="https://doc
    
    `docker exec -it task-php bin/console`
    
-    ![CLI APP](config/doc/cli.png)
-   
    You can see all domain event published on RabbitMQ - exchange `domain_events` on 
    
    http://localhost:8090 (guess/guess)
@@ -71,6 +69,8 @@ You can:
 1. Create users `docker exec -it task-php bin/console user:create`
 2. Create Tasks `docker exec -it task-php bin/console task:create`
 3. Get Tasks assigned to user today `docker exec -it task-php bin/console task:find:user:today`
+
+    ![CLI APP](config/doc/cli.png)
 
 ### 🎯 Ports and Adapters / Hexagonal Architecture
 
