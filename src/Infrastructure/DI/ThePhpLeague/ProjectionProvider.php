@@ -19,14 +19,20 @@ class ProjectionProvider extends AbstractServiceProvider
 
     public function register()
     {
-        $this->getContainer()->add(self::DBAL_TASK_PROJECTION, function () {
+        $this->getContainer()->add(
+            self::DBAL_TASK_PROJECTION,
+            function () {
 
-            return new MySqlDoctrineDbalTaskProjection($this->getContainer()->get(ServiceProvider::DBAL_CONNECTION));
-        });
+                return new MySqlDoctrineDbalTaskProjection($this->getContainer()->get(ServiceProvider::DBAL_CONNECTION));
+            }
+        );
 
-        $this->getContainer()->add(self::DBAL_USER_PROJECTION, function () {
+        $this->getContainer()->add(
+            self::DBAL_USER_PROJECTION,
+            function () {
 
-            return new MySqlDoctrineDbalUserProjection($this->getContainer()->get(ServiceProvider::DBAL_CONNECTION));
-        });
+                return new MySqlDoctrineDbalUserProjection($this->getContainer()->get(ServiceProvider::DBAL_CONNECTION));
+            }
+        );
     }
 }

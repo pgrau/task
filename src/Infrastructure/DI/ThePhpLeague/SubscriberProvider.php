@@ -20,14 +20,20 @@ class SubscriberProvider extends AbstractServiceProvider
 
     public function register()
     {
-        $this->getContainer()->add(self::SUBSCRIBER_TASK_CREATED, function () {
+        $this->getContainer()->add(
+            self::SUBSCRIBER_TASK_CREATED,
+            function () {
 
-            return new CreatedTaskSubscriber($this->getContainer()->get(ProjectionProvider::DBAL_TASK_PROJECTION));
-        });
+                return new CreatedTaskSubscriber($this->getContainer()->get(ProjectionProvider::DBAL_TASK_PROJECTION));
+            }
+        );
 
-        $this->getContainer()->add(self::SUBSCRIBER_USER_CREATED, function () {
+        $this->getContainer()->add(
+            self::SUBSCRIBER_USER_CREATED,
+            function () {
 
-            return new CreatedUserSubscriber($this->getContainer()->get(ProjectionProvider::DBAL_USER_PROJECTION));
-        });
+                return new CreatedUserSubscriber($this->getContainer()->get(ProjectionProvider::DBAL_USER_PROJECTION));
+            }
+        );
     }
 }

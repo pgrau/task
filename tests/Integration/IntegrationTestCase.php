@@ -11,10 +11,14 @@ use Psr\Container\ContainerInterface;
 
 abstract class IntegrationTestCase extends TestCase
 {
-    /** @var ContainerInterface */
+    /**
+     * @var ContainerInterface
+     */
     private $container;
 
-    /** @var Connection */
+    /**
+     * @var Connection
+     */
     private $connection;
 
     protected function getContainer(): Container
@@ -26,7 +30,7 @@ abstract class IntegrationTestCase extends TestCase
         return $this->container;
     }
 
-    protected function truncateTable(string... $tables): void
+    protected function truncateTable(string...$tables): void
     {
         $connection = $this->getConnection();
         $connection->executeStatement('SET foreign_key_checks = 0');
@@ -38,7 +42,7 @@ abstract class IntegrationTestCase extends TestCase
         $connection->executeStatement('SET foreign_key_checks = 1');
     }
 
-    protected function load(string... $pathFiles): void
+    protected function load(string...$pathFiles): void
     {
         $connection = $this->getConnection();
         $connection->executeStatement('SET foreign_key_checks = 0');

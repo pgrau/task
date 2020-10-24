@@ -40,8 +40,7 @@ final class MySqlDoctrineDbalTaskProjection implements TaskProjection
             ->setParameter(3, $payload['priority'])
             ->setParameter(4, $payload['assigned_to'])
             ->setParameter(5, $payload['created_at'])
-            ->setParameter(6, $payload['scheduled_at'])
-        ;
+            ->setParameter(6, $payload['scheduled_at']);
 
         $this->queryBuilder->execute();
     }

@@ -9,6 +9,7 @@ use Ramsey\Uuid\Uuid;
 abstract class DomainEvent
 {
     const DATE_FORMAT = 'Y-m-d H:i:s.u';
+    const EVENT_NAME = 'event.name';
 
     private string $aggregateId;
     private string $eventId;
@@ -21,8 +22,12 @@ abstract class DomainEvent
         $this->occurredOn = $occurredOn ?: new \DateTimeImmutable();
     }
 
-    abstract public function eventName(): string;
     abstract public function payload(): array;
+
+    public function eventName(): string
+    {
+        return static::EVENT_NAME;
+    }
 
     public function aggregateId(): string
     {

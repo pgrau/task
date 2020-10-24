@@ -31,7 +31,6 @@ services:
     container_name: task-php
     build: config/docker/php74
     working_dir: /var/www
-    command: php -S 0.0.0.0:8080 -t public
     ports:
       - 8082:8080
     volumes:

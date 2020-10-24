@@ -8,7 +8,7 @@ use Project\Domain\Model\Common\Event\DomainEvent;
 
 class UserCreatedV1 extends DomainEvent
 {
-    private const EVENT_NAME = 'user.created.v1';
+    public const EVENT_NAME = 'user.created.v1';
 
     private string $name;
 
@@ -25,11 +25,6 @@ class UserCreatedV1 extends DomainEvent
             $user->id()->get()->toString(),
             $user->name()
         );
-    }
-
-    public function eventName(): string
-    {
-        return self::EVENT_NAME;
     }
 
     public function payload(): array

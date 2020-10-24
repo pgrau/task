@@ -15,8 +15,7 @@ class CreateDatabaseCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setDescription('Create task database')
-        ;
+            ->setDescription('Create task database');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -28,7 +27,6 @@ class CreateDatabaseCommand extends Command
         try {
             $pdo = new \PDO($dsn, $user, $password);
             $pdo->exec('CREATE DATABASE task CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;');
-
         } catch (\PDOException $e) {
             echo 'Connection failed: ' . $e->getMessage() . PHP_EOL;
 

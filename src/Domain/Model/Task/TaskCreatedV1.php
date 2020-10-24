@@ -54,11 +54,6 @@ class TaskCreatedV1 extends DomainEvent
         );
     }
 
-    public function eventName(): string
-    {
-        return self::EVENT_NAME;
-    }
-
     public function payload(): array
     {
         return [

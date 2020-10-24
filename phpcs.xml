@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<ruleset name="Project Standards">
+
+    <description>Coding Standards</description>
+
+    <file>src</file>
+    <file>tests</file>
+
+    <exclude-pattern>*/config/*</exclude-pattern>
+    <exclude-pattern>*/metrics/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+
+
+    <arg name="report" value="summary"/>
+    <arg name="colors"/>
+    <arg value="p"/>
+
+    <ini name="memory_limit" value="128M"/>
+
+    <rule ref="PSR2"/>
+
+</ruleset>

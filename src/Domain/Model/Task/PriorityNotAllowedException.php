@@ -10,7 +10,8 @@ class PriorityNotAllowedException extends ConflictException
 {
     public static function fromString(string $value): self
     {
-        $message = sprintf('Priority must be one of (%s). Got(%s)',
+        $message = sprintf(
+            'Priority must be one of (%s). Got(%s)',
             implode(',', Priority::VALUES_ALLOWED),
             $value
         );

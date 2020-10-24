@@ -19,19 +19,28 @@ class QueryHandlerProvider extends AbstractServiceProvider
 
     public function register()
     {
-        $this->getContainer()->add(GetTaskHandler::class, function () {
+        $this->getContainer()->add(
+            GetTaskHandler::class,
+            function () {
 
-            return new GetTaskHandler($this->getContainer()->get(RepositoryProvider::DBAL_TASK_REPOSITORY));
-        });
+                return new GetTaskHandler($this->getContainer()->get(RepositoryProvider::DBAL_TASK_REPOSITORY));
+            }
+        );
 
-        $this->getContainer()->add(GetTasksByUserAndDateHandler::class, function () {
+        $this->getContainer()->add(
+            GetTasksByUserAndDateHandler::class,
+            function () {
 
-            return new GetTasksByUserAndDateHandler($this->getContainer()->get(RepositoryProvider::DBAL_TASK_REPOSITORY));
-        });
+                return new GetTasksByUserAndDateHandler($this->getContainer()->get(RepositoryProvider::DBAL_TASK_REPOSITORY));
+            }
+        );
 
-        $this->getContainer()->add(GetUsersHandler::class, function () {
+        $this->getContainer()->add(
+            GetUsersHandler::class,
+            function () {
 
-            return new GetUsersHandler($this->getContainer()->get(RepositoryProvider::DBAL_USER_REPOSITORY));
-        });
+                return new GetUsersHandler($this->getContainer()->get(RepositoryProvider::DBAL_USER_REPOSITORY));
+            }
+        );
     }
 }

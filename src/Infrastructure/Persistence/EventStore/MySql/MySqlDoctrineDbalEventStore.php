@@ -36,8 +36,7 @@ final class MySqlDoctrineDbalEventStore implements EventStore
             ->setParameter(1, $event->aggregateId())
             ->setParameter(2, $event->eventName())
             ->setParameter(3, \json_encode($event->payload()))
-            ->setParameter(4, $event->occurredOn()->format(self::DATE_FORMAT))
-        ;
+            ->setParameter(4, $event->occurredOn()->format(self::DATE_FORMAT));
 
         $this->queryBuilder->execute();
     }

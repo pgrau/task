@@ -20,14 +20,20 @@ class RepositoryProvider extends AbstractServiceProvider
 
     public function register()
     {
-        $this->getContainer()->add(self::DBAL_TASK_REPOSITORY, function () {
+        $this->getContainer()->add(
+            self::DBAL_TASK_REPOSITORY,
+            function () {
 
-            return new MySqlDoctrineDbalTaskRepository($this->getContainer()->get(ServiceProvider::DBAL_CONNECTION));
-        });
+                return new MySqlDoctrineDbalTaskRepository($this->getContainer()->get(ServiceProvider::DBAL_CONNECTION));
+            }
+        );
 
-        $this->getContainer()->add(self::DBAL_USER_REPOSITORY, function () {
+        $this->getContainer()->add(
+            self::DBAL_USER_REPOSITORY,
+            function () {
 
-            return new MySqlDoctrineDbalUserRepository($this->getContainer()->get(ServiceProvider::DBAL_CONNECTION));
-        });
+                return new MySqlDoctrineDbalUserRepository($this->getContainer()->get(ServiceProvider::DBAL_CONNECTION));
+            }
+        );
     }
 }

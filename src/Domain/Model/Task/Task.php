@@ -55,14 +55,14 @@ class Task extends AggregateRoot
     ): self {
 
         $task = new self(
-           TaskId::create(),
-           Summary::create($summary),
-           Description::create($description),
-           Priority::create($priority),
-           $userId ? UserId::fromString($userId) : null,
-           new \DateTimeImmutable(),
-           $scheduledAt ? new \DateTimeImmutable($scheduledAt) : null,
-           null
+            TaskId::create(),
+            Summary::create($summary),
+            Description::create($description),
+            Priority::create($priority),
+            $userId ? UserId::fromString($userId) : null,
+            new \DateTimeImmutable(),
+            $scheduledAt ? new \DateTimeImmutable($scheduledAt) : null,
+            null
         );
 
         $task->record(TaskCreatedV1::fromAggregate($task));

@@ -10,7 +10,8 @@ class MaxCharactersAllowedException extends ConflictException
 {
     public static function fromSummary(string $summary): self
     {
-        $message = sprintf('Summary has more than maximum characters allowed (%d). Got(%d)',
+        $message = sprintf(
+            'Summary has more than maximum characters allowed (%d). Got(%d)',
             Summary::MAX_CHARACTERS_ALLOWED,
             strlen($summary)
         );
@@ -20,7 +21,8 @@ class MaxCharactersAllowedException extends ConflictException
 
     public static function fromDescription(string $description): self
     {
-        $message = sprintf('Description has more than maximum characters allowed (%d). Got(%d)',
+        $message = sprintf(
+            'Description has more than maximum characters allowed (%d). Got(%d)',
             Description::MAX_CHARACTERS_ALLOWED,
             strlen($description)
         );

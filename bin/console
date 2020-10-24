@@ -4,6 +4,7 @@
 require __DIR__.'/../vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
+use Project\Infrastructure\UI\Command\Message;
 use Project\Infrastructure\UI\Command\Database;
 use Project\Infrastructure\UI\Command\Task;
 use Project\Infrastructure\UI\Command\User;
@@ -15,6 +16,8 @@ $dotenv->load(__DIR__.'/../.env');
 
 $container = new Container();
 $application = new Application('TASK MANAGER APP');
+
+$application->add(new Message\CreateExchangeCommand($container->get(ServiceProvider::RABBIT_MQ_CONFIGURER)));
 
 $application->add(new Database\CreateDatabaseCommand());
 $application->add(new Database\CreateSchemaCommand($container->get(ServiceProvider::DBAL_CONNECTION)));

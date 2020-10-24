@@ -35,8 +35,7 @@ class TaskCreateCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setDescription('Create new task')
-        ;
+            ->setDescription('Create new task');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -69,14 +68,16 @@ class TaskCreateCommand extends Command
         $question = new Question('<question>Please enter the description of the task:</question> ', null);
         $description = $helper->ask($input, $output, $question);
 
-        $question = new ChoiceQuestion('<question>Please select the priority of the task (default is LOW):</question> ',
+        $question = new ChoiceQuestion(
+            '<question>Please select the priority of the task (default is LOW):</question> ',
             Priority::VALUES_ALLOWED,
             2
         );
         $priority = $helper->ask($input, $output, $question);
 
         $users = array_merge(['Nobody'], $this->usersToArray(...$users));
-        $question = new ChoiceQuestion('<question>Please select the user for assign him/her the task (default is Nobody):</question> ',
+        $question = new ChoiceQuestion(
+            '<question>Please select the user for assign him/her the task (default is Nobody):</question> ',
             $users,
             0
         );
@@ -86,13 +87,15 @@ class TaskCreateCommand extends Command
         $userId = Uuid::isValid($userId) ? $userId : null;
 
         $question = new Question('<question>Please enter the date for schedule the task (format YYYY-mm-dd):</question> ', null);
-        $question->setValidator(function ($answer) {
-            if (! preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $answer)) {
-                throw new \RuntimeException('Invalid date. Introduce a date with format YYYY-mm-dd');
-            }
+        $question->setValidator(
+            function ($answer) {
+                if (! preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $answer)) {
+                    throw new \RuntimeException('Invalid date. Introduce a date with format YYYY-mm-dd');
+                }
 
-            return $answer;
-        });
+                return $answer;
+            }
+        );
 
         $scheduledAt = $helper->ask($input, $output, $question);
 

@@ -37,8 +37,7 @@ class GetTasksByUserAndSheduledTodayCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setDescription('Get tasks by user sheduled today')
-        ;
+            ->setDescription('Get tasks by user sheduled today');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -72,8 +71,7 @@ class GetTasksByUserAndSheduledTodayCommand extends Command
         $table = new Table($output);
         $table
             ->setHeaders(['ID', 'Priority', 'Summary'])
-            ->setRows($collection)
-        ;
+            ->setRows($collection);
 
         $table->render();
     }
@@ -86,7 +84,6 @@ class GetTasksByUserAndSheduledTodayCommand extends Command
         $confirm = $helper->ask($input, $output, $question);
 
         if ($confirm) {
-
             $output->writeln('');
 
             $question = new ChoiceQuestion(
@@ -99,7 +96,9 @@ class GetTasksByUserAndSheduledTodayCommand extends Command
             $task = $helper->ask($input, $output, $question);
 
             $query = new GetTaskQuery($task);
-            /** @var Task $task */
+            /**
+ * @var Task $task
+*/
             $task = $this->queryBus->handle($query);
 
             $output->writeln('<comment>Task selected</comment>');

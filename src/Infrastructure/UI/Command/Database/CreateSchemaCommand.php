@@ -25,15 +25,13 @@ class CreateSchemaCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setDescription('Create schema of task database')
-        ;
+            ->setDescription('Create schema of task database');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
             $this->connection->executeQuery(file_get_contents(__DIR__.'/../../../../../config/database/mysql/task.sql'));
-
         } catch (\Exception $e) {
             echo  $e->getMessage() . PHP_EOL;
 

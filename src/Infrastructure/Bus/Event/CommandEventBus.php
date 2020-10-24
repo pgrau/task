@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Project\Infrastructure\Bus\Event;
 
 use Project\Domain\Model\Common\Event\DomainEvent;
+use Project\Domain\Model\Common\Event\DomainEventPublisher;
 use Project\Domain\Model\Common\Event\DomainEventSubscriber;
 use Project\Domain\Model\Common\Event\EventBus;
 use Project\Domain\Model\Common\Event\EventStore;
@@ -12,11 +13,13 @@ use Project\Domain\Model\Common\Event\EventStore;
 final class CommandEventBus implements EventBus
 {
     private EventStore $eventStore;
+    private DomainEventPublisher $publisher;
     private array $subscribers;
 
-    public function __construct(EventStore $eventStore)
+    public function __construct(EventStore $eventStore, DomainEventPublisher $publisher)
     {
         $this->eventStore = $eventStore;
+        $this->publisher = $publisher;
         $this->subscribers = [];
     }
 
@@ -47,6 +50,7 @@ final class CommandEventBus implements EventBus
                     $subscriber->handle($event);
                 }
             }
+            $this->publisher->publish($event);
         }
     }
 }

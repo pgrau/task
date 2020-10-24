@@ -17,7 +17,7 @@ try {
     $pdo->exec($databases);
     $pdo->exec('USE task_test');
     $pdo->exec($schema);
-
 } catch (\PDOException $e) {
-    echo $e->getMessage() . PHP_EOL; die;
+    echo $e->getMessage() . PHP_EOL;
+    die;
 }

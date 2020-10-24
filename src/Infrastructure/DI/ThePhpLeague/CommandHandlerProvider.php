@@ -17,14 +17,20 @@ class CommandHandlerProvider extends AbstractServiceProvider
 
     public function register()
     {
-        $this->getContainer()->add(CreateTaskHandler::class, function () {
+        $this->getContainer()->add(
+            CreateTaskHandler::class,
+            function () {
 
-            return new CreateTaskHandler($this->getContainer()->get(ServiceProvider::EVENT_BUS));
-        });
+                return new CreateTaskHandler($this->getContainer()->get(ServiceProvider::EVENT_BUS));
+            }
+        );
 
-        $this->getContainer()->add(CreateUserHandler::class, function () {
+        $this->getContainer()->add(
+            CreateUserHandler::class,
+            function () {
 
-            return new CreateUserHandler($this->getContainer()->get(ServiceProvider::EVENT_BUS));
-        });
+                return new CreateUserHandler($this->getContainer()->get(ServiceProvider::EVENT_BUS));
+            }
+        );
     }
 }

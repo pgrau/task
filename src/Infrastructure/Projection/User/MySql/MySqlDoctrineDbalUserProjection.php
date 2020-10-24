@@ -32,8 +32,7 @@ final class MySqlDoctrineDbalUserProjection implements UserProjection
             ->setValue('id', '?')
             ->setValue('name', '?')
             ->setParameter(0, $event->aggregateId())
-            ->setParameter(1, $payload['name'])
-        ;
+            ->setParameter(1, $payload['name']);
 
         $this->queryBuilder->execute();
     }
