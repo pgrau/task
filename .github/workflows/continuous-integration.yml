@@ -21,4 +21,4 @@ jobs:
         run: docker exec -i task-php composer install
 
       - name: Run the tests
-        run: ./build.sh test
+        run: docker exec -i task-php composer phpunit
