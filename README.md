@@ -20,7 +20,7 @@ This project follow the Event Sourcing pattern described on <a href="https://doc
 ### ✔ Technology project
 <p>This project have the follow features</p>
 <p>1. All events are stored on the Event Store</p>
-<p>2. We build materialized views</p>
+<p>2. Subscribers build materialized views</p>
 <p>3. External systems and applications have available all domain events by message queue</p>
 
 ### 🖥️ Stack Technology
