@@ -31,7 +31,9 @@ class CreateSchemaCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
-            $this->connection->executeQuery(file_get_contents(__DIR__.'/../../../../../config/database/mysql/task.sql'));
+            $this->connection->executeQuery(
+                file_get_contents(__DIR__.'/../../../../../config/database/mysql/task.sql')
+            );
         } catch (\Exception $e) {
             echo  $e->getMessage() . PHP_EOL;
 

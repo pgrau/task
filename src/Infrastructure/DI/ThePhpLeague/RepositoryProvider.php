@@ -24,7 +24,9 @@ class RepositoryProvider extends AbstractServiceProvider
             self::DBAL_TASK_REPOSITORY,
             function () {
 
-                return new MySqlDoctrineDbalTaskRepository($this->getContainer()->get(ServiceProvider::DBAL_CONNECTION));
+                return new MySqlDoctrineDbalTaskRepository(
+                    $this->getContainer()->get(ServiceProvider::DBAL_CONNECTION)
+                );
             }
         );
 
@@ -32,7 +34,9 @@ class RepositoryProvider extends AbstractServiceProvider
             self::DBAL_USER_REPOSITORY,
             function () {
 
-                return new MySqlDoctrineDbalUserRepository($this->getContainer()->get(ServiceProvider::DBAL_CONNECTION));
+                return new MySqlDoctrineDbalUserRepository(
+                    $this->getContainer()->get(ServiceProvider::DBAL_CONNECTION)
+                );
             }
         );
     }

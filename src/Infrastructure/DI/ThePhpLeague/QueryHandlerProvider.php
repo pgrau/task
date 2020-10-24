@@ -31,7 +31,9 @@ class QueryHandlerProvider extends AbstractServiceProvider
             GetTasksByUserAndDateHandler::class,
             function () {
 
-                return new GetTasksByUserAndDateHandler($this->getContainer()->get(RepositoryProvider::DBAL_TASK_REPOSITORY));
+                return new GetTasksByUserAndDateHandler(
+                    $this->getContainer()->get(RepositoryProvider::DBAL_TASK_REPOSITORY)
+                );
             }
         );
 

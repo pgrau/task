@@ -23,7 +23,9 @@ class ProjectionProvider extends AbstractServiceProvider
             self::DBAL_TASK_PROJECTION,
             function () {
 
-                return new MySqlDoctrineDbalTaskProjection($this->getContainer()->get(ServiceProvider::DBAL_CONNECTION));
+                return new MySqlDoctrineDbalTaskProjection(
+                    $this->getContainer()->get(ServiceProvider::DBAL_CONNECTION)
+                );
             }
         );
 
@@ -31,7 +33,9 @@ class ProjectionProvider extends AbstractServiceProvider
             self::DBAL_USER_PROJECTION,
             function () {
 
-                return new MySqlDoctrineDbalUserProjection($this->getContainer()->get(ServiceProvider::DBAL_CONNECTION));
+                return new MySqlDoctrineDbalUserProjection(
+                    $this->getContainer()->get(ServiceProvider::DBAL_CONNECTION)
+                );
             }
         );
     }

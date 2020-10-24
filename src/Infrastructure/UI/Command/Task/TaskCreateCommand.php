@@ -86,7 +86,10 @@ class TaskCreateCommand extends Command
         $userId = $helper->ask($input, $output, $question);
         $userId = Uuid::isValid($userId) ? $userId : null;
 
-        $question = new Question('<question>Please enter the date for schedule the task (format YYYY-mm-dd):</question> ', null);
+        $question = new Question(
+            '<question>Please enter the date for schedule the task (format YYYY-mm-dd):</question> ',
+            null
+        );
         $question->setValidator(
             function ($answer) {
                 if (! preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $answer)) {
