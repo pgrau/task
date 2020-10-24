@@ -40,8 +40,11 @@ This project follow the standards described on <a href="https://docs.microsoft.c
 ### 🔥 Application execution
 
 1. Install all the dependencies and bring up the project with Docker executing:
+    
     `./build.sh start` -> run docker images
+    
     `./build.sh configure` -> configure all dependencies project
+    
 2. This app is only available by Command Interface Line
    You can see all availables command executing:
    `docker exec -it task-php bin/console`
