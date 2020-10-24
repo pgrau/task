@@ -54,9 +54,13 @@ This project follow the Event Sourcing pattern described on <a href="https://doc
    
    `docker exec -it task-php bin/console`
    
+    ![CLI APP](config/doc/cli.png)
+   
    You can see all domain event published on RabbitMQ - exchange `domain_events` on 
    
    http://localhost:8090 (guess/guess)
+   
+    ![MESSAGE QUEUE](config/doc/rabbit.png)
    
 ## 👩‍💻 Project explanation
 
@@ -193,7 +197,7 @@ src
 
 We use command bus for all use cases need write
 
-All commands are executed with transaction mode
+All commands are executed with transactional mode
 
 ### Query Bus
 
