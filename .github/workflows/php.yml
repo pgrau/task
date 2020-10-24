@@ -1,10 +1,10 @@
-name: PHP Composer
+name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - master
   pull_request:
-    branches: [ main ]
 
 jobs:
   build:
@@ -12,26 +12,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate
+      - name: Start all the environment
+        run: build.sh start
 
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+      - name: Configure all the environment
+        run: build.sh configure
 
-    - name: Install dependencies
-      if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: composer install --prefer-dist --no-progress --no-suggest
-
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-     - name: Run Static Analysis
-       run: composer phpstan
+      - name: Run the tests
+        run: build.sh test
