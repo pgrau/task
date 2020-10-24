@@ -1,0 +1,24 @@
+name: "Continuous Integration"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  phpunit:
+    name: "PHPUnit with MySQL"
+    runs-on: "ubuntu-20.04"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Start all the environment
+        run: build.sh start
+
+      - name: Configure all the environment
+        run: build.sh configure
+
+      - name: Run the tests
+        run: build.sh test
