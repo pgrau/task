@@ -55,6 +55,7 @@ This project follow the Event Sourcing pattern described on <a href="https://doc
    `docker exec -it task-php bin/console`
    
    You can see all domain event published on RabbitMQ - exchange `domain_events` on 
+   
    http://localhost:8090 (guess/guess)
    
 ## 👩‍💻 Project explanation
@@ -187,3 +188,23 @@ src
                 └── UserCreateCommand.php
 
 ``` 
+
+### Command Bus
+
+We use command bus for all use cases need write
+
+All commands bus are executed with transaction mode
+
+### Query Bus
+
+We use query bus for all use cases need only read
+
+All query bus are executed without transaction
+
+### Event Bus
+
+We use event bus for
+
+1. Append the domain events to Event Store
+2. Execute subscribers subscribed to domain events
+3. Publish all domain event to message queue 
