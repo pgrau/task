@@ -2,6 +2,10 @@
 Ports and Adapters, DDD & Event Driven Architecture  in PHP
 </h1>
 
+<p align="center">
+    <a href="https://github.com/pgrau/task/actions"><img src="https://github.com/pgrau/task/workflows/CI/badge.svg" alt="CI pipeline status" /></a>
+</p>
+
 <p align="left">
 This project follow the Event Sourcing pattern described on <a href="https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing"/>Microsoft Site</a>.
 </p>
