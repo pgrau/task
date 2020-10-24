@@ -18,7 +18,7 @@ jobs:
         run: ./build.sh start
 
       - name: Configure all the environment
-        run: ./build.sh configure
+        run: docker exec -i task-php composer install
 
       - name: Run the tests
         run: ./build.sh test

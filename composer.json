@@ -33,7 +33,8 @@
   },
   "scripts": {
     "phpstan": "./vendor/bin/phpstan analyse --memory-limit=4000M",
-    "phpcbf": "./vendor/bin/phpcbf -v src tests"
+    "phpcbf": "./vendor/bin/phpcbf -v src tests",
+    "phpunit": "./vendor/bin/phpunit --color=always"
   },
   "minimum-stability": "stable",
   "prefer-stable": true
