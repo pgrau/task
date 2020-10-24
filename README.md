@@ -17,7 +17,7 @@ This project follow the Event Sourcing pattern described on <a href="https://doc
 </p>
 
 
-### Technology project
+### ✔ Technology project
 <p>This project have the follow features</p>
 <p>1. All events are stored on the Event Store</p>
 <p>2. We build materialized views</p>
