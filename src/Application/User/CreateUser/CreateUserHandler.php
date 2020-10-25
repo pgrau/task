@@ -16,7 +16,7 @@ final class CreateUserHandler
         $this->eventBus = $eventBus;
     }
 
-    public function handle(CreateUserCommand $command)
+    public function handle(CreateUserCommand $command): void
     {
         $task = User::create($command->name());
 

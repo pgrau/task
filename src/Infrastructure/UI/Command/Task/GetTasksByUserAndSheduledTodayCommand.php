@@ -8,8 +8,8 @@ use League\Tactician\CommandBus;
 use Project\Application\Task\GetTask\GetTaskQuery;
 use Project\Application\Task\GetTasksByUserAndDate\GetTasksByUserAndDateQuery;
 use Project\Application\User\GetUsers\GetUsersQuery;
-use Project\Domain\Model\Task\Task;
-use Project\Domain\Model\User\User;
+use Project\Domain\Model\Task\TaskRead;
+use Project\Domain\Model\User\UserRead;
 use Project\Infrastructure\Bus\Query\ThePhpLeague\QueryBus;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
@@ -60,7 +60,7 @@ class GetTasksByUserAndSheduledTodayCommand extends Command
         return Command::SUCCESS;
     }
 
-    private function printTasks(OutputInterface $output, Task ...$tasks): void
+    private function printTasks(OutputInterface $output, TaskRead ...$tasks): void
     {
         $collection = [];
         foreach ($tasks as $task) {
@@ -96,9 +96,7 @@ class GetTasksByUserAndSheduledTodayCommand extends Command
             $task = $helper->ask($input, $output, $question);
 
             $query = new GetTaskQuery($task);
-            /**
- * @var Task $task
-*/
+            /** @var TaskRead $task */
             $task = $this->queryBus->handle($query);
 
             $output->writeln('<comment>Task selected</comment>');
@@ -138,7 +136,7 @@ class GetTasksByUserAndSheduledTodayCommand extends Command
         return $userId;
     }
 
-    private function usersToArray(User ...$users): array
+    private function usersToArray(UserRead ...$users): array
     {
         $data = [];
         foreach ($users as $user) {

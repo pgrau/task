@@ -6,13 +6,13 @@ namespace Project\Infrastructure\Persistence\Task\MySql;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\ParameterType;
-use Project\Domain\Model\Task\Task;
+use Project\Domain\Model\Task\TaskRead;
 use Project\Domain\Model\Task\TaskId;
 use Project\Domain\Model\Task\TaskNotFoundException;
-use Project\Domain\Model\Task\TaskRepository;
+use Project\Domain\Model\Task\TaskReadRepository;
 use Project\Domain\Model\User\UserId;
 
-final class MySqlDoctrineDbalTaskRepository implements TaskRepository
+final class MySqlDoctrineDbalTaskReadRepository implements TaskReadRepository
 {
     private Connection $connection;
 
@@ -40,7 +40,7 @@ SQL;
         return $this->buildFromArray($statement->fetchAllAssociative());
     }
 
-    public function getOne(TaskId $taskId): Task
+    public function getOne(TaskId $taskId): TaskRead
     {
         $sql = <<<SQL
          SELECT * 
@@ -57,14 +57,23 @@ SQL;
             throw TaskNotFoundException::byId($taskId);
         }
 
-        return Task::fromRepository($data[0]);
+        return $this->buildFromArray($data)[0];
     }
 
     private function buildFromArray(array $data): array
     {
         $collection = [];
         foreach ($data as $row) {
-            $collection[] = Task::fromRepository($row);
+            $collection[] = new TaskRead(
+                $row['id'],
+                $row['summary'],
+                $row['description'],
+                $row['priority'],
+                $row['assigned_to'],
+                $row['created_at'],
+                $row['scheduled_at'],
+                $row['update_at']
+            );
         }
 
         return $collection;

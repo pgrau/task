@@ -23,7 +23,7 @@ class QueryHandlerProvider extends AbstractServiceProvider
             GetTaskHandler::class,
             function () {
 
-                return new GetTaskHandler($this->getContainer()->get(RepositoryProvider::DBAL_TASK_REPOSITORY));
+                return new GetTaskHandler($this->getContainer()->get(RepositoryProvider::DBAL_TASK_READ_REPOSITORY));
             }
         );
 
@@ -32,7 +32,7 @@ class QueryHandlerProvider extends AbstractServiceProvider
             function () {
 
                 return new GetTasksByUserAndDateHandler(
-                    $this->getContainer()->get(RepositoryProvider::DBAL_TASK_REPOSITORY)
+                    $this->getContainer()->get(RepositoryProvider::DBAL_TASK_READ_REPOSITORY)
                 );
             }
         );
@@ -41,7 +41,7 @@ class QueryHandlerProvider extends AbstractServiceProvider
             GetUsersHandler::class,
             function () {
 
-                return new GetUsersHandler($this->getContainer()->get(RepositoryProvider::DBAL_USER_REPOSITORY));
+                return new GetUsersHandler($this->getContainer()->get(RepositoryProvider::DBAL_USER_READ_REPOSITORY));
             }
         );
     }

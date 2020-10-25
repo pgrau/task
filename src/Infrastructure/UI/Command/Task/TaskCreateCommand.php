@@ -8,7 +8,7 @@ use League\Tactician\CommandBus;
 use Project\Application\Task\CreateTask\CreateTaskCommand;
 use Project\Application\User\GetUsers\GetUsersQuery;
 use Project\Domain\Model\Task\Priority;
-use Project\Domain\Model\User\User;
+use Project\Domain\Model\User\UserRead;
 use Project\Infrastructure\Bus\Query\ThePhpLeague\QueryBus;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Console\Command\Command;
@@ -105,7 +105,7 @@ class TaskCreateCommand extends Command
         return [$summary, $description, $priority, $userId, $scheduledAt];
     }
 
-    private function usersToArray(User ...$users): array
+    private function usersToArray(UserRead ...$users): array
     {
         $data = [];
         foreach ($users as $user) {

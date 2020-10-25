@@ -1,5 +1,5 @@
 <h1 align="center">
-Ports and Adapters, DDD & Event Driven Architecture  in PHP
+Ports and Adapters, DDD, CQRS & Event Driven Architecture  in PHP
 </h1>
 
 <p align="center">
@@ -17,11 +17,11 @@ This project follow the Event Sourcing pattern described on <a href="https://doc
 </p>
 
 
-### ✔ Technology project
+### ✔ Project Technology
 <p>This project have the follow features</p>
-<p>1. All events are stored on the Event Store</p>
-<p>2. Subscribers build materialized views</p>
-<p>3. External systems and applications have available all domain events by message queue</p>
+<p>1. The Event Store is the authoritative data source of this project. All events are stored using an append-only operation.</p>
+<p>2. Subscribers build materialized views.</p>
+<p>3. External systems and applications have available all domain events by message queue.</p>
 
 ### 🖥️ Stack Technology
 
@@ -192,6 +192,14 @@ src
                 └── UserCreateCommand.php
 
 ``` 
+
+### WRITE / READ Models
+
+<p>This project separate WRITE / READ models.</p>
+<p>WRITE models have behavior (we avoid setters)</p>
+<p>READ models are immutable because they are simple, cacheable and predictable.</p>
+<p>All models must be always VALID</p>
+<p>We avoid auto-generated identifiers. We use UIIDs</p>
 
 ### Command Bus
 

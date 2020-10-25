@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Project\Infrastructure\Persistence\User\MySql;
 
 use Doctrine\DBAL\Connection;
-use Project\Domain\Model\User\User;
-use Project\Domain\Model\User\UserRepository;
+use Project\Domain\Model\User\UserRead;
+use Project\Domain\Model\User\UserReadRepository;
 
-final class MySqlDoctrineDbalUserRepository implements UserRepository
+final class MySqlDoctrineDbalUserReadRepository implements UserReadRepository
 {
     private Connection $connection;
 
@@ -31,7 +31,7 @@ final class MySqlDoctrineDbalUserRepository implements UserRepository
     {
         $collection = [];
         foreach ($data as $row) {
-            $collection[] = User::fromRepository($row);
+            $collection[] = new UserRead($row['id'], $row['name']);
         }
 
         return $collection;

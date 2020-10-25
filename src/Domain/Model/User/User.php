@@ -5,13 +5,10 @@ declare(strict_types=1);
 namespace Project\Domain\Model\User;
 
 use Project\Domain\Model\Common\Aggregate\AggregateRoot;
-use Webmozart\Assert\Assert;
 
 class User extends AggregateRoot
 {
-    private UserId $id;
-
-    private string $name;
+    use UserTrait;
 
     private function __construct(UserId $id, string $name)
     {
@@ -26,23 +23,5 @@ class User extends AggregateRoot
         $user->record(UserCreatedV1::fromAggregate($user));
 
         return $user;
-    }
-
-    public static function fromRepository(array $item): self
-    {
-        Assert::keyExists($item, 'id');
-        Assert::keyExists($item, 'name');
-
-        return new self(UserId::fromString($item['id']), $item['name']);
-    }
-
-    public function id(): UserId
-    {
-        return $this->id;
-    }
-
-    public function name(): string
-    {
-        return $this->name;
     }
 }

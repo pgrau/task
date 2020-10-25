@@ -6,9 +6,9 @@ namespace Project\Domain\Model\Task;
 
 use Project\Domain\Model\User\UserId;
 
-interface TaskRepository
+interface TaskReadRepository
 {
     public function findByUserIdAndDateScheduled(UserId $userId, \DateTimeInterface $date): array;
 
-    public function getOne(TaskId $taskId): Task;
+    public function getOne(TaskId $taskId): TaskRead;
 }
