@@ -28,6 +28,5 @@ class TaskRead
         $this->createdAt = new \DateTimeImmutable($createdAt);
         $this->scheduledAt = $scheduledAt ? new \DateTimeImmutable($scheduledAt) : null;
         $this->updatedAt = $updatedAt ? new \DateTimeImmutable($updatedAt) : null;
-        ;
     }
 }
