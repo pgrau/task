@@ -1,5 +1,5 @@
 <h1 align="center">
-Ports and Adapters, DDD, CQRS & Event Driven Architecture  in PHP
+Ports and Adapters, DDD, CQRS & <br/> Event Driven Architecture  in PHP
 </h1>
 
 <p align="center">
@@ -19,7 +19,7 @@ This project follow the Event Sourcing pattern described on <a href="https://doc
 
 ### ✔ Project Technology
 <p>This project have the follow features</p>
-<p>1. The Event Store is the authoritative data source of this project. All events are stored using an append-only operation.</p>
+<p>1. The Event Store is the authoritative data source. All events are stored using an append-only operation.</p>
 <p>2. Subscribers build materialized views.</p>
 <p>3. External systems and applications have available all domain events by message queue.</p>
 
@@ -78,7 +78,7 @@ This repository follow the Ports and Adapters / Hexagonal Architecture  pattern.
    
 ```
 src
-├── Application  // Write / Read Use Cases
+├── Application
 │   ├── Task
 │   │   ├── CreateTask
 │   │   │   ├── CreateTaskCommand.php
@@ -97,13 +97,13 @@ src
 │           ├── GetUsersHandler.php
 │           └── GetUsersQuery.php
 ├── Domain
-│   ├── Event // Subscribers to domain events
+│   ├── Event
 │   │   ├── Task
 │   │   │   └── CreatedTaskSubscriber.php
 │   │   └── User
 │   │       └── CreatedUserSubscriber.php
-│   └── Model 
-│       ├── Common // Code shared 
+│   └── Model
+│       ├── Common
 │       │   ├── Aggregate
 │       │   │   └── AggregateRoot.php
 │       │   ├── Event
@@ -128,13 +128,17 @@ src
 │       │   ├── TaskId.php
 │       │   ├── TaskNotFoundException.php
 │       │   ├── TaskProjection.php
-│       │   └── TaskRepository.php
+│       │   ├── TaskRead.php
+│       │   ├── TaskReadRepository.php
+│       │   └── TaskTrait.php
 │       └── User
 │           ├── User.php
 │           ├── UserCreatedV1.php
 │           ├── UserId.php
 │           ├── UserProjection.php
-│           └── UserRepository.php
+│           ├── UserRead.php
+│           ├── UserReadRepository.php
+│           └── UserTrait.php
 └── Infrastructure
     ├── Bus
     │   ├── Command
@@ -167,10 +171,10 @@ src
     │   │       └── MySqlDoctrineDbalEventStore.php
     │   ├── Task
     │   │   └── MySql
-    │   │       └── MySqlDoctrineDbalTaskRepository.php
+    │   │       └── MySqlDoctrineDbalTaskReadRepository.php
     │   └── User
     │       └── MySql
-    │           └── MySqlDoctrineDbalUserRepository.php
+    │           └── MySqlDoctrineDbalUserReadRepository.php
     ├── Projection
     │   ├── Task
     │   │   └── MySql
@@ -179,7 +183,7 @@ src
     │       └── MySql
     │           └── MySqlDoctrineDbalUserProjection.php
     └── UI
-        └── Command // Symfony commands
+        └── Command
             ├── Database
             │   ├── CreateDatabaseCommand.php
             │   └── CreateSchemaCommand.php
