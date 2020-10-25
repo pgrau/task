@@ -2,7 +2,14 @@
   "name": "pgrau/task",
   "license": "proprietary",
   "type": "project",
-  "description": "An example project applying Domain-Driven Design, Hexagonal Architecture and Event Sourcing",
+  "description": "An example project applying Ports and Adapters, DDD, CQRS & Event Driven Architecture in PHP ",
+  "authors": [
+    {
+      "name": "Pau Ferran Grau",
+      "email": "pau.ferran.grau@gmail.com",
+      "homepage": "https://github.com/pgrau"
+    }
+  ],
   "require": {
     "php": "^7.4",
     "ramsey/uuid": "^3.9",
@@ -27,9 +34,9 @@
     }
   },
   "autoload-dev": {
-    "classmap": [
-      "tests/"
-    ]
+    "psr-4": {
+      "Project\\Test\\": "tests/"
+    }
   },
   "scripts": {
     "phpstan": "./vendor/bin/phpstan analyse --memory-limit=4000M",
